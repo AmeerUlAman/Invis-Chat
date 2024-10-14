@@ -1,0 +1,69 @@
+.whole{
+    display: flex;
+    min-width: 100vw;
+    min-height:100vh;
+  justify-content: center;
+ align-items: center;
+background: black;
+}
+ 
+
+.contactsection{
+width: 25%;
+height: 95vh;
+/* background-color: rgb(36, 35, 35); */
+border-radius: 9px;
+margin: 10px auto;
+
+}
+
+.userinfo{
+    width: 100%;
+    height: 20%;
+    background-color: rgb(36, 35, 35);
+    border-radius: 9px;
+    margin-bottom: 0px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4);   
+}
+  .gp{
+    width: 100%;
+    height: 2%;
+     
+
+  }  
+    .contacts{
+       
+        width: 100%;
+        height: 66%;
+        background-color: rgb(36, 35, 35);
+        border-radius: 9px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+        -1px -1px 6px rgba(255, 255, 255, 0.4);
+
+        }
+        .gp{
+          width: 100%;
+          height: 2%;
+           
+      
+        }  
+        .userinfo{
+          width: 100%;
+          height: 15%;
+          background-color: rgb(36, 35, 35);
+          border-radius: 9px;
+          margin-bottom: 0px;
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+          -1px -1px 6px rgba(255, 255, 255, 0.4);   
+      }    
+/* CHATAREA */
+.ch{
+    margin-left: 12px;
+    width: 73%;
+height:95vh;
+background-color: rgb(36, 35, 35);
+border-radius: 9px;margin: 10px auto;
+box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+-1px -1px 6px rgba(255, 255, 255, 0.4);
+}
