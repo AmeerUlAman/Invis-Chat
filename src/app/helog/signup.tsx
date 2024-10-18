@@ -31,6 +31,9 @@ function Signup() {
     } else {
       const data = await response.json();
       console.log('Success:', data);
+      const url = new URL('/chatroom', window.location.origin);  
+      url.searchParams.set('username', username.toString());
+      window.location.href = url.toString(); 
     }
   }
   return (

@@ -58,12 +58,104 @@ margin: 10px auto;
           -1px -1px 6px rgba(255, 255, 255, 0.4);   
       }    
 /* CHATAREA */
-.ch{
+.chat{
     margin-left: 12px;
     width: 73%;
+    display: flex;
+    flex-direction: column-reverse;
 height:95vh;
 background-color: rgb(36, 35, 35);
-border-radius: 9px;margin: 10px auto;
+border-radius: 9px;
+margin: 10px auto;
 box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
 -1px -1px 6px rgba(255, 255, 255, 0.4);
+}
+
+.messsagearea{
+height: 90%;
+background-color: rgb(75, 66, 66);
+border-radius: 9px;
+border-top-right-radius:0px ;
+border-top-left-radius:0px ;
+display: flex;
+flex-direction: column-reverse;
+}
+
+.messageinput{
+width: 65%;
+height: 37px;
+border-radius: 21px;
+border: none;
+
+background-color: rgb(109, 109, 106);
+color: aliceblue;
+font-size: medium;
+outline: none;
+} 
+
+
+.messageinput::placeholder {
+  color: #352e2e; /* Placeholder color */
+}
+.messageinput:focus{
+color: rgb(255, 250, 204);
+}
+
+.messaging{
+display: flex;
+height: 7%;
+width: 100%;
+margin: auto;
+margin-bottom: 13px;
+justify-content: center;
+}
+
+.send{
+
+  margin-left: 9px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: rgb(24, 24, 24);
+ overflow: hidden;
+}
+
+
+
+
+
+.contactinfo{
+  height: 10%;
+  display: flex;
+}
+
+
+
+
+/* 
+/////////////////////  CONDET STYLING
+*/
+
+.centered{
+display: flex;
+ 
+align-items: center;
+color: rgb(160, 160, 160);
+height: 100%;
+}
+.imagecont{
+  width:30% ;
+  margin: 0px 0px 0px 27px;
+}
+.image{
+height: 56px;
+width: 56px;
+background-color: rgb(209, 225, 138);
+border-radius: 50%;
+margin:0px 15px 0px 15px ;
+}
+.weluser{
+
+  
 }
