@@ -58,7 +58,7 @@ margin: 10px auto;
           -1px -1px 6px rgba(255, 255, 255, 0.4);   
       }    
 /* CHATAREA */
-.chat{
+.chatscreen{
     margin-left: 12px;
     width: 73%;
     display: flex;
@@ -71,7 +71,7 @@ box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
 -1px -1px 6px rgba(255, 255, 255, 0.4);
 }
 
-.messsagearea{
+.chatareawhole{
 height: 90%;
 background-color: rgb(75, 66, 66);
 border-radius: 9px;
@@ -101,7 +101,7 @@ outline: none;
 color: rgb(255, 250, 204);
 }
 
-.messaging{
+.messagingsendingmodule{
 display: flex;
 height: 7%;
 width: 100%;
@@ -122,6 +122,29 @@ justify-content: center;
 }
 
 
+
+.chatarea{
+height: 91%;
+overflow-y: scroll;
+display: flex;
+flex-direction: column;
+}
+
+
+
+.chat{
+  max-width: 60%;
+  display: flex;
+ text-wrap: wrap;
+height: auto;
+  margin: auto;
+margin-bottom:35px ;
+margin-right: 55px;
+background-color: #352e2e;
+padding: 7px;
+border-radius: 14px;
+color: white;
+}
 
 
 
@@ -154,8 +177,4 @@ width: 56px;
 background-color: rgb(209, 225, 138);
 border-radius: 50%;
 margin:0px 15px 0px 15px ;
-}
-.weluser{
-
-  
 }

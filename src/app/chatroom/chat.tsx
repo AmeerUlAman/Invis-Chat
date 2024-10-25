@@ -1,18 +1,35 @@
+"use client";
+
 import styles from "./chatroom.module.css";
 import Image from "next/image";
+import React,{useState} from "react";
 
 const Chat=()=>{
+const [messin,setmessin]=useState("");
+const [printval,setprintval]=useState("");
+
+const handlemessin=(event: React.ChangeEvent<HTMLInputElement>)=>{
+setmessin(event.target.value);
+
+}
+const print=()=>{
+setprintval(messin);
+
+}
+
 
 
 return(
-<div className={styles.chat}>
-<div className={styles.messsagearea}>
-<div className={styles.messaging}>
-<input type="text" className={styles.messageinput} placeholder="Enter your message..." style={{paddingLeft:"15px"}}/>
-<button className={styles.send} >
-    {/* <center> <Image  src={'/sendbutton.svg'}height={40} width={40}alt="SEND"/></center> */}
-   </button>
-</div>
+<div className={styles.chatscreen}>
+<div className={styles.chatareawhole}>
+   
+<div className={styles.messagingsendingmodule}>
+    <input type="text" className={styles.messageinput} placeholder="Enter your message..." style={{paddingLeft:"15px"}} onChange={handlemessin}/>
+    <button className={styles.send} onClick={print}></button>
+</div> 
+<div className={styles.chatarea}>
+    <div className={styles.chat}> MESSAGE : {printval}</div>
+   </div>
 </div>
 
 <div className={styles.contactinfo}>

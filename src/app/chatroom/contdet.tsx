@@ -18,9 +18,5 @@ const Contdet=()=>{
 </div>
 
     );
-
-
-
-
 }
 export default Contdet;

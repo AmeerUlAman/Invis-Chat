@@ -38,7 +38,7 @@ function Signup() {
   }
   return (
     <>
-      {/* {butpress ? (
+      {butpress ? (
         <div className={styles.log}>
           <div className={styles.login}>
             <center><h1 style={{ color: 'white' }}>Join Us Today!</h1></center>
@@ -60,7 +60,7 @@ function Signup() {
             </form>
           </div>
         </div>
-      ) : ( */}
+      ) : (
         <div className={styles.log}>
           <div className={styles.login}>
             <center><h1 style={{ color: 'white' }}>Register Yourself</h1></center>
@@ -125,7 +125,7 @@ function Signup() {
             </form>
           </div>
         </div>
-      {/* )} */}
+        )}  
     </>
   );
 }
