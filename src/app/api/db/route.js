@@ -23,7 +23,7 @@ export async function POST(req) {
     const result = await client.query(query);
     console.log(result.rows[0]);
 
-    // Return the successful response directly
+    
     return new Response(JSON.stringify({ success: true, data: result.rows[0] }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
@@ -35,8 +35,7 @@ export async function POST(req) {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
-  } finally {
-    // Ensure the client connection is closed
+  } finally { 
     await client.end();
   }
 }
