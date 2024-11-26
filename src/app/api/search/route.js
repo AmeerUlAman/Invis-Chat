@@ -15,27 +15,25 @@ await client.connect();
 console.log("SUCCESS");
 
 const query= {
-text:"SELECT * FROM auth_table WHERE username = $1",
-values:[searching]
+    text: "SELECT * FROM auth_table WHERE username ILIKE $1 ORDER BY username ASC",
+    values: [`%${searching}%`],
 }
 
 const result = await client.query(query);
 console.log(result.rows)   
 
 
-if (result.rows.length > 0) {
-    console.log("User found:", result.rows[0].username);
-
+ 
 return new Response(
     JSON.stringify({
      success: true,
-      data: result.rows[0].username
+      data: result.rows, 
      }),
       {
   status: 200,
   headers: { 'Content-Type': 'application/json' },
 });
-}
+ 
 } catch (error) {
 console.error("ERROR", error);
 return new Response(

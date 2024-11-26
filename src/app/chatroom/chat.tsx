@@ -4,9 +4,10 @@ import styles from "./chatroom.module.css";
 import Image from "next/image";
 import React,{useState} from "react";
 
-const Chat=()=>{
+const Chat=({usern})=>{
 const [messin,setmessin]=useState("");
 const [printval,setprintval]=useState("");
+
 
 const handlemessin=(event: React.ChangeEvent<HTMLInputElement>)=>{
 setmessin(event.target.value);
@@ -21,6 +22,9 @@ setprintval(messin);
 
 return(
 <div className={styles.chatscreen}>
+<div className={styles.contactinfo}>
+ <div>{usern}</div>
+ </div>
 <div className={styles.chatareawhole}>
    
 <div className={styles.messagingsendingmodule}>
@@ -32,9 +36,7 @@ return(
    </div>
 </div>
 
-<div className={styles.contactinfo}>
- 
-</div>
+
 
 </div>
 );
