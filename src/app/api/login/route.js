@@ -1,7 +1,8 @@
 import { Client } from "pg";
 
+
 export async function POST(req) {
-  const { username, email, password, phone } = await req.json(); // Use req.json() to parse the incoming JSON body
+  const { username, email, password } = await req.json();  
 
   const client = new Client({
     user: "postgres",
@@ -16,8 +17,8 @@ export async function POST(req) {
     console.log("SUCCESS");
 
     const query = {
-      text: "INSERT INTO auth_table(username,email,password,phone) VALUES ($1,$2,$3,$4) RETURNING *",
-      values: [username, email, password, phone],
+      text: "SELECT * FROM auth_table WHERE email = $1, password = $2",
+      values: [username, email, password ],
     };
 
     const result = await client.query(query);
