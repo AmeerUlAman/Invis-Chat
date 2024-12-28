@@ -15,7 +15,6 @@ setmessin(event.target.value);
 }
 const print=()=>{
 setprintval(messin);
-
 }
 
 
