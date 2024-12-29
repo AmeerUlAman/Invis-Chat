@@ -1,5 +1,5 @@
 .loginwhole{
- width: 500px; 
+ width: 350px; 
  height: auto;
  margin: auto;
  background-color: black;
@@ -29,7 +29,7 @@ flex-direction: column;
 .field{
     width: calc(100%-17px);
 padding: 9px;
-padding-left: 0px;
+padding-left: 9px;
 padding-right: 0px;
 border: none;
 border-radius: 5px;
@@ -40,7 +40,12 @@ color: black;
 .field:active{
     border: none;
  }
- 
+
+ .title{
+margin: none;
+
+}
+
 .loginbut{
 width: 100%; ;
 background-color: rgb(2, 90, 191);
@@ -63,4 +68,10 @@ margin: 14px;
     display: flex;
     width: 100%;
     justify-content: flex-start;
+}
+.logoimage{
+height: 50px;
+width: 117px;
+margin-top: 19px;
+
 }
