@@ -15,7 +15,9 @@ const [password, setPassword] = useState('');
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const response = await fetch('/api/db', {
+
+    
+    const response = await fetch('/api/elogin', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
