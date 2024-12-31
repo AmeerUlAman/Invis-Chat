@@ -15,7 +15,7 @@ export async function POST(req) {
     await client.connect();
     console.log("SUCCESS");
 
-    let query; // Declare the query variable
+    let query;
 
     if (usermail.includes("@")) {
       query = {
@@ -30,7 +30,17 @@ export async function POST(req) {
     }
 
     const result = await client.query(query);
-    console.log(result.rows[0]);
+
+    if (result.rows.length === 0) {
+      // No matching user found
+      return new Response(
+        JSON.stringify({ success: false, message: "Invalid username or password" }),
+        {
+          status: 401, // Unauthorized
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
 
     return new Response(
       JSON.stringify({ success: true, data: result.rows[0] }),
