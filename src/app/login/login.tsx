@@ -51,7 +51,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           <div className={styles.wholefield}>
             <label htmlFor="email">E-mail</label>
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               placeholder="Enter your Username / Email"

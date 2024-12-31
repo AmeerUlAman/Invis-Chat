@@ -1,8 +1,7 @@
 import { Client } from "pg";
 
-
 export async function POST(req) {
-  const {   usermail, password } = await req.json();  
+  const { usermail, password } = await req.json();
 
   const client = new Client({
     user: "postgres",
@@ -16,10 +15,19 @@ export async function POST(req) {
     await client.connect();
     console.log("SUCCESS");
 
-    const query = {
-      text: "SELECT * FROM auth_table WHERE email = $1 AND password = $2",
-      values: [  usermail, password ],
-    };
+    let query; // Declare the query variable
+
+    if (usermail.includes("@")) {
+      query = {
+        text: "SELECT * FROM auth_table WHERE email = $1 AND password = $2",
+        values: [usermail, password],
+      };
+    } else {
+      query = {
+        text: "SELECT * FROM auth_table WHERE username = $1 AND password = $2",
+        values: [usermail, password],
+      };
+    }
 
     const result = await client.query(query);
     console.log(result.rows[0]);
