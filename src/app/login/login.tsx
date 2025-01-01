@@ -1,13 +1,14 @@
 "use client";
- 
+
 import styles from "./login.module.css";
 import Image from "next/image";
 import { useState } from "react";
 
 const Login = () => {
-  const [usermail, setUsermail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // State for error message
+  const [error, setError] = useState("");
+  const [loggedInUser, setLoggedInUser] = useState(""); // State for the logged-in username
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,16 +19,16 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ usermail, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Success:", data);
+        setLoggedInUser(data.username); // Set the logged-in username for display
 
-        // Redirect to chatroom with usermail
+        // Redirect to chatroom with username as a query parameter
         const url = new URL("/chatroom", window.location.origin);
-        url.searchParams.set("usermail", usermail.toString());
+        url.searchParams.set("username", data.username);
         window.location.href = url.toString();
       } else if (response.status === 401) {
         setError("Invalid username or password");
@@ -60,14 +61,13 @@ const Login = () => {
 
         <form className={styles.ver} onSubmit={handleSubmit}>
           <div className={styles.wholefield}>
-            <label htmlFor="email">E-mail</label>
+            <label htmlFor="username">Username or Email</label>
             <input
               type="text"
-              id="email"
-              name="email"
+              id="username"
               placeholder="Enter your Username / Email"
               className={styles.field}
-              onChange={(e) => setUsermail(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
           </div>
@@ -76,7 +76,6 @@ const Login = () => {
             <input
               type="password"
               id="password"
-              name="password"
               placeholder="Enter your Password"
               className={styles.field}
               onChange={(e) => setPassword(e.target.value)}
@@ -84,8 +83,7 @@ const Login = () => {
             />
           </div>
 
-          {/* Display error message */}
-          {error && <p className={styles.error}>{error}</p>}
+          {error && <p className={styles.error}>{error}</p>} {/* Display error messages */}
 
           <div className={styles.ex}>
             <p className={styles.existing}>
@@ -97,6 +95,12 @@ const Login = () => {
             Log in
           </button>
         </form>
+
+        {loggedInUser && (
+          <p className={styles.success}>
+            Welcome, <strong>{loggedInUser}</strong>!
+          </p>
+        )}
       </div>
     </div>
   );

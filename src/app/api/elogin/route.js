@@ -1,7 +1,7 @@
 import { Client } from "pg";
 
 export async function POST(req) {
-  const { usermail, password } = await req.json();
+  const { username, password } = await req.json();
 
   const client = new Client({
     user: "postgres",
@@ -13,37 +13,32 @@ export async function POST(req) {
 
   try {
     await client.connect();
-    console.log("SUCCESS");
 
-    let query;
-
-    if (usermail.includes("@")) {
-      query = {
-        text: "SELECT * FROM auth_table WHERE email = $1 AND password = $2",
-        values: [usermail, password],
-      };
-    } else {
-      query = {
-        text: "SELECT * FROM auth_table WHERE username = $1 AND password = $2",
-        values: [usermail, password],
-      };
-    }
+    const query = username.includes("@")
+      ? {
+          text: "SELECT username FROM auth_table WHERE email = $1 AND password = $2",
+          values: [username, password],
+        }
+      : {
+          text: "SELECT username FROM auth_table WHERE username = $1 AND password = $2",
+          values: [username, password],
+        };
 
     const result = await client.query(query);
 
     if (result.rows.length === 0) {
-      // No matching user found
       return new Response(
         JSON.stringify({ success: false, message: "Invalid username or password" }),
         {
-          status: 401, // Unauthorized
+          status: 401,
           headers: { "Content-Type": "application/json" },
         }
       );
     }
 
+    const user = result.rows[0].username; // Extract username
     return new Response(
-      JSON.stringify({ success: true, data: result.rows[0] }),
+      JSON.stringify({ success: true, username: user }), // Include username in response
       {
         status: 200,
         headers: { "Content-Type": "application/json" },
@@ -52,7 +47,7 @@ export async function POST(req) {
   } catch (err) {
     console.error("ERROR", err.stack);
     return new Response(
-      JSON.stringify({ success: false, error: err.message }),
+      JSON.stringify({ success: false, error: "Server error. Try again later." }),
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
