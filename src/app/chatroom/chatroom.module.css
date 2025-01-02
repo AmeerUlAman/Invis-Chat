@@ -154,8 +154,10 @@ color: white;
 
 
 .contactinfo{
-  height: 10%;
+  height: 45px;
   display: flex;
+align-items: center;
+padding: 18px;
 }
 
 .searchuser{
@@ -197,6 +199,14 @@ border-bottom: 1px solid rgb(255, 255, 255);
   cursor: pointer;
   background-color: #352e2e;
 }
+
+.username{
+  font-size: medium;
+ color: white;
+ 
+}
+
+
 /* 
 /////////////////////  CONtact DETail STYLING
 */
@@ -211,6 +221,13 @@ height: 100%;
 .imagecont{
   width:30% ;
   margin: 0px 0px 0px 27px;
+}
+.profile{
+border-radius: 50%;
+height: 50px;
+width: 50px;
+background-color: rosybrown;
+margin-right: 17px;
 }
 .image{
 height: 56px;
