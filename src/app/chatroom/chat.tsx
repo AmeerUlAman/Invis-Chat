@@ -19,10 +19,10 @@ const Chat = ({ usern }) => {
     <div className={styles.chatscreen}>
       <div className={styles.contactinfo}>
         {/* <Image src="/profile.png" height={256} width={256} alt="profile" /> */}
-       <div     className={styles.profile}></div>
+        <div className={styles.profile}></div>
         <div className={styles.username}>{usern}</div>
       </div>
-      <hr style={{width:"90%"}} />
+      <hr className={styles.hr} />
       <div className={styles.chatareawhole}>
         <div className={styles.messagingsendingmodule}>
           <input
