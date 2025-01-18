@@ -1,0 +1,96 @@
+.hero{
+display: flex;
+width: 100%;
+margin: 0px;
+flex-wrap: wrap;
+
+}
+.intro{
+width: 65%;
+
+}
+.introtext{
+font-size: 70px;
+font-weight: 700;
+color: white;
+margin: 0px;
+margin-left: 35px;
+margin-top: 75px;
+}
+.log{
+    width: 35%;
+display: flex;
+justify-content: center;
+position: relative;
+margin-top: 19px;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 70px;
+    width: 50%;
+    height: fit-content;
+    /* background-color: rgb(0, 0, 0); */
+    /* background-color: rgba(38, 44, 74, 0.666); */
+    /* border: 2px rgba(158, 198, 255, 0.281) solid; */
+    /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+  -1px -1px 6px rgba(255, 255, 255, 0.15); */
+  background-color: rgb(36, 35, 35);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+  -1px -1px 6px rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    padding: 25px;
+overflow: hidden;
+padding-top: 0px;
+}
+
+.in{
+   
+    width: 100%;
+    padding: 9px;
+    padding-left: 9px;
+    padding-right: 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: large;
+background-color: rgb(214,216,217);
+color: black;
+ 
+     }
+     .in:active{
+        border: none;
+     }
+     .spbutton{
+        margin-top: 12px;
+        margin-bottom: 5px;
+        width: 100%;
+        padding: 9px;
+        background-color: rgb(2, 90, 191);
+        color: white;
+        text-align: center;
+        font-size: large;
+        
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+     }
+.introlist{
+display: flex;
+gap: 5rem;
+color: white;
+margin-top: 39px;
+margin-left: 35px;
+font-size: 37px;
+}
+.existing{
+    color: white;
+    font-size: 15px;
+    margin: 0px;
+    margin-top: 7px;
+}
+.spbutton:hover{
+    background-color: rgb(46, 138, 243);
+
+}
