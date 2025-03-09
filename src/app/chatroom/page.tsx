@@ -1,32 +1,33 @@
 "use client";
 
-import React, { useState } from "react"; 
-import styles from "./chatroom.module.css"; 
+import React, { useState } from "react";
+import styles from "./chatroom.module.css";
 import Contdet from "./contdet";
 import Chat from "./chat";
 import { Suspense } from "react";
 
-export default function Home() {
-  const [searching, setsearching] = useState(""); // State for search input
-  const [results, setresults] = useState([]);     // State for search results
-  const [cont,setcon]=useState("");
-  const [saveuser,setsaveuser]=useState("");
+interface User {
+  id: string;
+  username: string;
+}
 
-  // Handle search input
-  const handlesearching = async (event:any) => {
-    event.preventDefault(); // Prevent default behavior
+export default function Home() {
+  const [searching, setsearching] = useState("");
+  const [results, setresults] = useState<User[]>([]);
+  const [saveuser, setsaveuser] = useState("");
+
+  const handlesearching = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
 
     const query = event.target.value;
-    setsearching(query); // Update the searching state
+    setsearching(query);
 
-    // If the input is less than 2 characters or empty, reset results
     if (query.trim() === "" || query.length < 1) {
       setresults([]);
       return;
     }
 
     try {
-      // Fetch results from the API
       const response = await fetch("/api/search", {
         method: "POST",
         headers: {
@@ -38,10 +39,7 @@ export default function Home() {
       if (!response.ok) {
         console.error("Failed to submit");
       } else {
-        const data = await response.json();
-        console.log("Success:", data);
-
-        // Update results if the response is successful
+        const data: { success: boolean; data: User[] } = await response.json();
         if (data.success) {
           setresults(data.data);
         }
@@ -50,13 +48,13 @@ export default function Home() {
       console.error("Error:", error);
     }
   };
-const setcontact=()=>{
-const un=document.getElementById("selectcont")?.textContent;
-console.log(un);
-setsaveuser(un);
-setsearching("");
-setresults([]);
-}
+
+  const setcontact = (username: string) => {
+    setsaveuser(username);
+    setsearching("");
+    setresults([]);
+  };
+
   return (
     <div className={styles.whole}>
       <div className={styles.contactsection}>
@@ -67,7 +65,6 @@ setresults([]);
         <div className={styles.gp}></div>
 
         <div className={styles.contacts}>
-          {/* Search Input */}
           <input
             type="text"
             placeholder="Search Contacts..."
@@ -76,17 +73,12 @@ setresults([]);
             value={searching}
             id="search"
           />
-          {/* <p>{searching}</p> */}
 
-          {/* Results Section */}
           <div className={styles.sca}>
             {results.length > 0 ? (
               results.map((user) => (
                 <div key={user.id} className={styles.searchedcontacts}>
-
-                  <p id="selectcont" onClick={setcontact}>{user.username}</p>
-                
-                  {/* <p>{user.email}</p> */}
+                  <p onClick={() => setcontact(user.username)}>{user.username}</p>
                 </div>
               ))
             ) : (
@@ -96,11 +88,10 @@ setresults([]);
         </div>
 
         <div className={styles.gp}></div>
-
         <div className={styles.userinfo}></div>
       </div>
 
-      <Chat usern={saveuser}/>
+      <Chat usern={saveuser} />
     </div>
   );
 }
