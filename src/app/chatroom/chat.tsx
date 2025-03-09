@@ -4,13 +4,18 @@ import styles from "./chatroom.module.css";
 import Image from "next/image";
 import React, { useState } from "react";
 
-const Chat = ({ usern }) => {
+interface ChatProps {
+  usern: string; // Explicitly define 'usern' as a string
+}
+
+const Chat: React.FC<ChatProps> = ({ usern }) => {
   const [messin, setmessin] = useState("");
   const [printval, setprintval] = useState("");
 
   const handlemessin = (event: React.ChangeEvent<HTMLInputElement>) => {
     setmessin(event.target.value);
   };
+
   const print = () => {
     setprintval(messin);
   };
@@ -18,7 +23,6 @@ const Chat = ({ usern }) => {
   return (
     <div className={styles.chatscreen}>
       <div className={styles.contactinfo}>
-        {/* <Image src="/profile.png" height={256} width={256} alt="profile" /> */}
         <div className={styles.profile}></div>
         <div className={styles.username}>{usern}</div>
       </div>
@@ -41,4 +45,5 @@ const Chat = ({ usern }) => {
     </div>
   );
 };
+
 export default Chat;
